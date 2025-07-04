@@ -1,0 +1,152 @@
+.topbar {
+  background: var(--ml-yellow);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.topbarContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md) 0;
+  min-height: 64px;
+}
+
+.logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:focus {
+    outline: 2px solid var(--ml-blue);
+    outline-offset: 4px;
+    border-radius: var(--border-radius-sm);
+  }
+}
+
+.logoText {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--ml-gray-600);
+  white-space: nowrap;
+}
+
+.searchWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.secondaryNav {
+  flex-shrink: 0;
+  min-width: 120px;
+}
+
+.navPlaceholder {
+  height: 40px;
+  // Placeholder para futuros elementos de navegación
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .topbarContent {
+    gap: var(--spacing-md);
+  }
+
+  .logoText {
+    font-size: var(--font-size-lg);
+  }
+
+  .searchWrapper {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .topbarContent {
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) 0;
+    min-height: 56px;
+  }
+
+  .logoText {
+    font-size: var(--font-size-base);
+  }
+
+  .searchWrapper {
+    max-width: none;
+  }
+
+  .secondaryNav {
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbarContent {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .logo {
+    order: 1;
+  }
+
+  .searchWrapper {
+    order: 3;
+    flex-basis: 100%;
+    margin-top: var(--spacing-sm);
+  }
+
+  .secondaryNav {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .logoText {
+    font-size: var(--font-size-sm);
+  }
+}
+
+// Estados de accesibilidad
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    transition: none;
+  }
+  
+  .logo:hover {
+    transform: none;
+  }
+}
+
+// Modo de alto contraste
+@media (prefers-contrast: high) {
+  .topbar {
+    border-bottom: 2px solid var(--ml-gray-600);
+  }
+  
+  .logoText {
+    color: black;
+  }
+} 
