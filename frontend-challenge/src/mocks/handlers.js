@@ -1,7 +1,6 @@
 import { http, HttpResponse } from 'msw';
 import { mockSearchResponses, mockProductDetails, simulateNetworkDelay } from './data.js';
 
-
 export const handlers = [
   http.get('/api/search', async ({ request }) => {
     const url = new URL(request.url);
@@ -26,9 +25,16 @@ export const handlers = [
     }
     
     const normalizedQuery = query.toLowerCase().trim();
-    const response = mockSearchResponses[normalizedQuery];
     
-    // Si no hay respuesta específica, devolver 404
+    let response = mockSearchResponses[normalizedQuery];
+    
+    if (!response) {
+      const matchingKey = Object.keys(mockSearchResponses).find(key => 
+        key.includes(normalizedQuery) || normalizedQuery.includes(key)
+      );
+      response = matchingKey ? mockSearchResponses[matchingKey] : null;
+    }
+    
     if (!response) {
       return HttpResponse.json(
         { error: 'Not found', message: 'No results for this query' },
@@ -36,16 +42,23 @@ export const handlers = [
       );
     }
     
-    response.paging.offset = parseInt(offset);
-    response.paging.limit = parseInt(limit);
+    const responseWithQuery = {
+      ...response,
+      query: query,
+      paging: {
+        ...response.paging,
+        offset: parseInt(offset),
+        limit: parseInt(limit)
+      }
+    };
     
-    return HttpResponse.json(response);
+    return HttpResponse.json(responseWithQuery);
   }),
   
   http.get('/api/items/:id', async ({ params }) => {
     const { id } = params;
     await simulateNetworkDelay(500);
-  
+    
     const productDetail = mockProductDetails[id];
   
     if (!productDetail) {
@@ -54,7 +67,7 @@ export const handlers = [
         { status: 404 }
       );
     }
-  
+    
     return HttpResponse.json(productDetail);
   }),
 ];

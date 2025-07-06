@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "@/styles/globals.scss";
 import Topbar from "@/components/layout/Topbar/Topbar";
+import MSWProvider from "@/components/layout/MSWProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <MSWProvider />
         <Topbar />
         <main id="main-content">
           {children}

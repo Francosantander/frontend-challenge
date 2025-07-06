@@ -11,14 +11,12 @@ const SearchBox = ({ onSearch, placeholder = "Buscar productos, marcas y más...
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validación básica
     if (!query.trim()) {
       inputRef.current?.focus();
       return;
     }
 
-    // Sanitización básica del input
-    const sanitizedQuery = query.trim().slice(0, 100); // Limitar a 100 caracteres
+    const sanitizedQuery = query.trim().slice(0, 100);
     
     setIsLoading(true);
     
@@ -33,7 +31,6 @@ const SearchBox = ({ onSearch, placeholder = "Buscar productos, marcas y más...
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    // Filtrar caracteres peligrosos básicos
     const sanitizedValue = value.replace(/[<>]/g, '');
     setQuery(sanitizedValue);
   };

@@ -50,18 +50,8 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.secondaryNav {
-  flex-shrink: 0;
-  min-width: 120px;
-}
-
-.navPlaceholder {
-  height: 40px;
-  // Placeholder para futuros elementos de navegación
+  max-width: 70%;
+  margin: 0 var(--spacing-md);
 }
 
 // Responsive Design
@@ -75,11 +65,15 @@
   }
 
   .searchWrapper {
-    max-width: 500px;
+    max-width: 60%;
   }
 }
 
 @media (max-width: 768px) {
+  .topbar {
+    padding-bottom: 1%;
+  }
+  
   .container {
     padding: 0 var(--spacing-sm);
   }
@@ -91,15 +85,13 @@
   }
 
   .logoText {
-    font-size: var(--font-size-base);
+    display: none;
   }
 
   .searchWrapper {
     max-width: none;
-  }
-
-  .secondaryNav {
-    min-width: 80px;
+    flex: 1;
+    justify-content: center;
   }
 }
 
@@ -111,21 +103,17 @@
 
   .logo {
     order: 1;
+    min-width: 0;
   }
 
   .searchWrapper {
-    order: 3;
-    flex-basis: 100%;
-    margin-top: var(--spacing-sm);
-  }
-
-  .secondaryNav {
     order: 2;
-    margin-left: auto;
+    flex: 1;
+    margin: 0;
   }
 
   .logoText {
-    font-size: var(--font-size-sm);
+    display: none;
   }
 }
 

@@ -10,9 +10,10 @@ export const initMSW = async () => {
         onUnhandledRequest: 'bypass',
         serviceWorker: {
           url: '/mockServiceWorker.js'
-        }
+        },
+        waitUntilReady: true
       });
-      console.log('MSW initialized for API mocking');
+      
     } catch (error) {
       console.error('Failed to initialize MSW:', error);
     }

@@ -133,10 +133,13 @@ export const mockProductDetail = {
   }
 };
 
+export const mockSearchResponses = {
+  iphone: mockSearchResponse
+};
+
 export const mockProductDetails = {
   MLA998877665: mockProductDetail
 };
-
 
 // Función para simular delay de red
 export const simulateNetworkDelay = (ms = 800) => {
