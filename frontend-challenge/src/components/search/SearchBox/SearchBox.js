@@ -55,10 +55,7 @@ const SearchBox = ({ onSearch, placeholder = "Buscar productos, marcas y más...
           onChange={handleInputChange}
           placeholder={placeholder}
           className={styles.searchInput}
-          aria-label="Términos de búsqueda"
-          aria-describedby="search-help"
-          maxLength={100}
-          autoComplete="off"
+          aria-label="Buscar productos, marcas y más"
           disabled={isLoading}
         />
         
@@ -86,10 +83,6 @@ const SearchBox = ({ onSearch, placeholder = "Buscar productos, marcas y más...
             <span className={styles.searchIcon} aria-hidden="true">🔍</span>
           )}
         </button>
-      </div>
-      
-      <div id="search-help" className="sr-only">
-        Ingresa términos de búsqueda y presiona Enter o haz clic en el botón buscar
       </div>
     </form>
   );

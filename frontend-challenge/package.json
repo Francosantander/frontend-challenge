@@ -29,11 +29,6 @@
     "jest-environment-jsdom": "^30.0.4",
     "msw": "^2.10.3"
   },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/setupTests.js"
-    ]
-  },
   "msw": {
     "workerDirectory": [
       "public"

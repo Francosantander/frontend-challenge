@@ -4,7 +4,7 @@ import Link from 'next/link';
 import SearchBox from '@/components/search/SearchBox/SearchBox';
 import styles from './Topbar.module.scss';
 
-const Topbar = ({ }) => {
+const Topbar = ({ onSearch }) => {
 
   return (
     <header className={styles.topbar} role="banner">
@@ -14,7 +14,7 @@ const Topbar = ({ }) => {
             <span className={styles.logoText}>Mercado Libre</span>
           </Link>
           <div className={styles.searchWrapper}>
-            <SearchBox/>
+            <SearchBox onSearch={onSearch} />
           </div>
         </div>
       </div>

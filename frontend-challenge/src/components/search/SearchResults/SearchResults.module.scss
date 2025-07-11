@@ -1,0 +1,330 @@
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1200px;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+  background: var(--ml-gray-100);
+  min-height: 100vh;
+
+  @media (max-width: $mobile) {
+    padding: var(--spacing-sm);
+  }
+}
+
+// Loading state with skeletons
+.loadingHeader {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  background: white;
+  border-radius: var(--border-radius-md);
+
+  h2 {
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--ml-gray-600);
+    font-size: var(--font-size-2xl);
+    font-weight: 400;
+  }
+
+  p {
+    color: var(--ml-gray-500);
+    margin: 0;
+    font-size: var(--font-size-base);
+  }
+}
+
+// Error state
+.error {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  background: white;
+  border-radius: var(--border-radius-md);
+  
+  h2 {
+    color: var(--ml-error);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-2xl);
+  }
+
+  p {
+    color: var(--ml-gray-500);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-base);
+  }
+
+  .retryButton {
+    background: var(--ml-blue);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background: var(--ml-dark-blue);
+    }
+  }
+}
+
+// No results state
+.noResults {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  background: white;
+  border-radius: var(--border-radius-md);
+
+  h2 {
+    margin-bottom: var(--spacing-md);
+    color: var(--ml-gray-600);
+    font-size: var(--font-size-2xl);
+  }
+
+  p {
+    color: var(--ml-gray-500);
+    margin-bottom: var(--spacing-xl);
+    font-size: var(--font-size-base);
+  }
+
+  .suggestions {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto var(--spacing-lg);
+
+    h3 {
+      color: var(--ml-gray-600);
+      margin-bottom: var(--spacing-md);
+      font-size: var(--font-size-lg);
+      font-weight: 500;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: var(--spacing-sm) 0;
+        color: var(--ml-gray-500);
+        font-size: var(--font-size-sm);
+        
+        &::before {
+          content: "• ";
+          color: var(--ml-blue);
+          margin-right: var(--spacing-sm);
+        }
+      }
+    }
+  }
+
+  .searchTips {
+    background: var(--ml-gray-100);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    margin-top: var(--spacing-lg);
+
+    p {
+      margin: 0;
+      color: var(--ml-gray-500);
+      font-size: var(--font-size-sm);
+      line-height: 1.5;
+
+      strong {
+        color: var(--ml-gray-600);
+      }
+    }
+
+    @media (max-width: $mobile) {
+      padding: var(--spacing-sm);
+      font-size: var(--font-size-xs);
+    }
+  }
+}
+
+// Product list
+.productList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.productCard {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: white;
+  border-bottom: 1px solid var(--ml-gray-200);
+  transition: box-shadow 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--shadow-sm);
+  }
+
+  &:last-child {
+    border-bottom: none;
+    border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+  }
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+}
+
+.productImage {
+  position: relative;
+  flex-shrink: 0;
+  width: 180px;
+  height: 180px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: var(--border-radius-sm);
+  }
+
+  @media (max-width: $mobile) {
+    width: 100%;
+    height: 200px;
+    align-self: center;
+    max-width: 280px;
+  }
+}
+
+.productInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.productTitle {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  color: var(--ml-gray-600);
+  line-height: 1.3;
+  font-weight: 400;
+  text-decoration: none;
+  margin-bottom: var(--spacing-sm);
+  margin-top: 2%;
+
+  &:hover {
+    color: var(--ml-blue);
+  }
+}
+
+
+.priceAndRating {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-sm);
+  margin-right: 30%;
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}
+
+.priceSection {
+  .mainPrice {
+    .price {
+      font-size: 1.75rem;
+      font-weight: 300;
+      color: var(--ml-gray-600);
+      line-height: 1;
+    }
+  }
+
+  .installments {
+    color: var(--ml-success);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+  }
+}
+
+// Rating
+.reviews {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+
+    .ratingNumber {
+      color: var(--ml-gray-400);
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      margin-right: var(--spacing-xs);
+    }
+
+    .stars {
+      display: flex;
+      gap: 1px;
+
+      .starFilled {
+        color: var(--ml-blue);
+        font-size: var(--font-size-base);
+      }
+
+      .starEmpty {
+        color: var(--ml-gray-300);
+        font-size: var(--font-size-base);
+      }
+    }
+  }
+
+  .reviewCount {
+    color: var(--ml-gray-400);
+    font-size: var(--font-size-base);
+  }
+}
+
+.productFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+// freeShipping
+.freeShipping {
+  color: var(--ml-success);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.condition {
+  color: var(--ml-gray-500);
+  font-size: var(--font-size-sm);
+}
+
+// Mobile-specific adjustments
+@media (max-width: $mobile) {
+  .priceSection {
+    .mainPrice {
+      .price {
+        font-size: 1.75rem;
+      }
+    }
+  }
+
+  .productTitle {
+    font-size: var(--font-size-lg);
+    line-height: 1.3;
+  }
+
+  .productFeatures {
+    gap: var(--spacing-sm);
+  }
+} 
