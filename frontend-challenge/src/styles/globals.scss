@@ -1,18 +1,26 @@
-// Variables de colores MercadoLibre
+// Variables para MercadoLibre
 :root {
   // Colores principales ML
   --ml-yellow: #ffe600;
   --ml-blue: #3483fa;
   --ml-dark-blue: #2968c8;
   --ml-light-blue: #e6f7ff;
+  --ml-light-blue-2: #e2ecfb;
+  // Verde ML
+  --ml-green: #00a650;
+  --ml-light-green: #e8f5e8;
   
   // Grises
+  --ml-gray-50: #fafafa;
   --ml-gray-100: #f5f5f5;
   --ml-gray-200: #eeeeee;
   --ml-gray-300: #d9d9d9;
   --ml-gray-400: #999999;
   --ml-gray-500: #666666;
   --ml-gray-600: #333333;
+  --ml-gray-700: #212121;
+  --ml-gray-800: #1a1a1a;
+  --ml-gray-900: #000000;
   
   // Estados
   --ml-success: #00a650;
@@ -26,6 +34,16 @@
   --font-size-lg: 1.125rem;  // 18px
   --font-size-xl: 1.25rem;   // 20px
   --font-size-2xl: 1.5rem;   // 24px
+  --font-size-3xl: 1.875rem; // 30px
+  --font-size-4xl: 2.25rem;  // 36px
+  --font-size-5xl: 2.75rem;
+  
+  // Font weights
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
   
   // Espaciado
   --spacing-xs: 0.25rem;  // 4px
@@ -33,16 +51,22 @@
   --spacing-md: 1rem;     // 16px
   --spacing-lg: 1.5rem;   // 24px
   --spacing-xl: 2rem;     // 32px
+  --spacing-2xl: 3rem;    // 48px
   
   // Bordes
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
   
   // Sombras
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  // Breakpoints (for JS usage)
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 1024px;
 }
 
 // Reset básico

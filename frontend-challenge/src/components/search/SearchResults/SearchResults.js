@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './SearchResults.module.scss';
 import { SkeletonList } from './SkeletonCard';
 
@@ -70,72 +71,78 @@ const SearchResults = ({
       <div className={styles.productList}>
         {results.map((product) => {
           return (
-            <article key={product.id} className={styles.productCard}>
-              <div className={styles.productImage}>
-                <img 
-                  src={product.thumbnail} 
-                  alt={product.title}
-                  loading="lazy"
-                />
-              </div>
-              
-              <div className={styles.productInfo}>
-                <h3 className={styles.productTitle}>{product.title}</h3>
+            <Link 
+              key={product.id} 
+              href={`/items/${product.id}`}
+              className={styles.productLink}
+            >
+              <article className={styles.productCard}>
+                <div className={styles.productImage}>
+                  <img 
+                    src={product.thumbnail} 
+                    alt={product.title}
+                    loading="lazy"
+                  />
+                </div>
                 
-                <div className={styles.priceAndRating}>
-                  <div className={styles.priceSection}>
-                    <div className={styles.mainPrice}>
-                      <span className={styles.price}>
-                        $ {formatPrice(product.price)}
-                      </span>
+                <div className={styles.productInfo}>
+                  <h3 className={styles.productTitle}>{product.title}</h3>
+                  
+                  <div className={styles.priceAndRating}>
+                    <div className={styles.priceSection}>
+                      <div className={styles.mainPrice}>
+                        <span className={styles.price}>
+                          $ {formatPrice(product.price)}
+                        </span>
+                      </div>
+                      
+                      {product.installments && (
+                        <div className={styles.installments}>
+                          Mismo precio en {product.installments.quantity} cuotas de $ {formatPrice(product.installments.amount)}
+                        </div>
+                      )}
                     </div>
-                    
-                    {product.installments && (
-                      <div className={styles.installments}>
-                        Mismo precio en {product.installments.quantity} cuotas de $ {formatPrice(product.installments.amount)}
+
+                    {product.reviews && product.reviews.total > 0 && (
+                      <div className={styles.reviews}>
+                        <div className={styles.rating}>
+                          <span className={styles.ratingNumber}>
+                            {product.reviews.rating_average.toFixed(1)}
+                          </span>
+                          <span className={styles.stars}>
+                            {Array.from({ length: 5 }, (_, i) => (
+                              <span 
+                                key={i} 
+                                className={i < Math.floor(product.reviews.rating_average) ? styles.starFilled : styles.starEmpty}
+                              >
+                                ★
+                              </span>
+                            ))}
+                          </span>
+                          <span className={styles.reviewCount}>
+                            ({product.reviews.total})
+                          </span>
+                        </div>
                       </div>
                     )}
                   </div>
 
-                  {product.reviews && product.reviews.total > 0 && (
-                    <div className={styles.reviews}>
-                      <div className={styles.rating}>
-                        <span className={styles.ratingNumber}>
-                          {product.reviews.rating_average}
-                        </span>
-                        <span className={styles.stars}>
-                          {Array.from({ length: 5 }, (_, i) => (
-                            <span 
-                              key={i} 
-                              className={i < Math.floor(product.reviews.rating_average) ? styles.starFilled : styles.starEmpty}
-                            >
-                              ★
-                            </span>
-                          ))}
-                        </span>
-                        <span className={styles.reviewCount}>
-                          ({product.reviews.total})
-                        </span>
+                  <div className={styles.productFeatures}>
+                    {product.shipping?.free_shipping && (
+                      <div className={styles.freeShipping}>
+                        Envío gratis
                       </div>
-                    </div>
-                  )}
+                    )}
+                    
+                    {product.condition && (
+                      <div className={styles.condition}>
+                        {product.condition === 'new' ? 'Nuevo' : 'Usado'}
+                      </div>
+                    )}
+                  </div>
                 </div>
-
-                <div className={styles.productFeatures}>
-                  {product.shipping?.free_shipping && (
-                    <div className={styles.freeShipping}>
-                      Envío gratis
-                    </div>
-                  )}
-                  
-                  {product.condition && (
-                    <div className={styles.condition}>
-                      {product.condition === 'new' ? 'Nuevo' : 'Usado'}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </article>
+              </article>
+            </Link>
           );
         })}
       </div>

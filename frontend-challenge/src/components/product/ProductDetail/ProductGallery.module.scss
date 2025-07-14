@@ -1,0 +1,172 @@
+@use '../../../styles/variables.scss' as *;
+
+.galleryContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.thumbnailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 70px;
+  overflow-x: auto;
+  padding: 0 0;
+  scrollbar-width: thin;
+  scrollbar-color: $ml-gray-300 transparent;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $ml-gray-300;
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $ml-gray-700;
+  }
+}
+
+.thumbnail {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border: 2px solid transparent;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+  
+  &:hover {
+    border-color: $ml-blue;
+    transform: scale(1.05);
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  @media (max-width: $mobile) {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.thumbnailActive {
+  border-color: $ml-blue;
+  box-shadow: 0 0 0 1px $ml-blue;
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.mainImageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: $mobile) {
+    aspect-ratio: 4/3;
+  }
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: white;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.placeholderImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $ml-gray-100;
+  color: $ml-gray-300;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  
+  span {
+    text-align: center;
+    padding: 2rem;
+  }
+}
+
+.imageCounter {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  
+  @media (max-width: $mobile) {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.625rem;
+    padding: 0.125rem 0.5rem;
+  }
+}
+
+@media (max-width: $tablet) {
+  .galleryContainer {
+    gap: 0.75rem;
+  }
+  
+  .thumbnailsContainer {
+    gap: 0.375rem;
+  }
+}
+
+@media (max-width: $mobile) {
+  .galleryContainer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .thumbnailsContainer {
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+  }
+  
+  .mainImageContainer {
+    border-radius: 0.25rem;
+  }
+} 
