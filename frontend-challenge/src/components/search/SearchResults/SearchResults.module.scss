@@ -1,6 +1,4 @@
-$mobile: 768px;
-$tablet: 1024px;
-$desktop: 1200px;
+@use '../../../styles/variables.scss' as *;
 
 .container {
   max-width: 1200px;
@@ -150,6 +148,17 @@ $desktop: 1200px;
   display: flex;
   flex-direction: column;
   gap: 0;
+}
+
+.productLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  
+  &:hover {
+    text-decoration: none;
+  }
+  
 }
 
 .productCard {
@@ -309,7 +318,7 @@ $desktop: 1200px;
   font-size: var(--font-size-sm);
 }
 
-// Mobile-specific adjustments
+
 @media (max-width: $mobile) {
   .priceSection {
     .mainPrice {

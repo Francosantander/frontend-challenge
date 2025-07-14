@@ -1,0 +1,330 @@
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statusInfo {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  color: var(--ml-gray-400);
+}
+
+.condition {
+  color: var(--ml-gray-400);
+  font-weight: var(--font-weight-normal);
+}
+
+.soldQuantity {
+  margin-left: var(--spacing-sm);
+  color: var(--ml-gray-400);
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  font-weight: var(--font-weight-bold);
+  font-size: 1.5rem;
+  color: var(--ml-blue);
+  margin-right: -5%;
+}
+
+.productTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--ml-gray-900);
+  line-height: 1.3;  
+}
+
+.reviewsSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-lg);
+  margin: -3% 0 0 0;
+}
+
+.rating {
+  color: var(--ml-gray-400);
+}
+
+.stars {
+  display: flex;
+  gap: 0.125rem;
+}
+
+.starFilled {
+  color: var(--ml-blue);
+  font-size: var(--font-size-xl);
+}
+
+.starEmpty {
+  color: var(--ml-gray-300);
+  font-size: var(--font-size-base);
+}
+
+.reviewCount {
+  color: var(--ml-gray-400);
+}
+
+.originalPrice {
+  font-size: var(--font-size-lg);
+  color: var(--ml-gray-400);
+  text-decoration: line-through;
+}
+
+.priceSection {
+  margin-top: -5%;
+  display: flex;
+  align-items: center;
+}
+
+.originalPriceDecimals {
+    font-size: var(--font-size-xs);
+    vertical-align: super;
+    margin-left: 2px;
+    position: relative;
+    top: 0;
+  }
+
+.priceDecimals {
+    font-size: var(--font-size-lg);
+    vertical-align: super;
+    margin-left: 2px;
+    position: relative;
+    top: -0.5em;
+  }
+
+.currentPrice {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-normal);
+  color: var(--ml-gray-900);
+  
+}
+
+.discountBadge {
+  color: var(--ml-green);
+  padding: 0.25rem 0.5rem;
+  font-size: var(--font-size-lg);
+}
+
+// Cuotas en verde
+.installmentsInfo {
+  color: var(--ml-green);
+  font-size: var(--font-size-xl);
+  margin-top: -7%;
+  width: 75%;
+}
+
+.installmentsDecimals {
+    font-size: var(--font-size-sm);
+    vertical-align: super;
+    margin-left: 2px;
+    position: relative;
+    top: 0;
+  }
+
+.paymentMethods {
+  background: none;
+  border: none;
+  color: var(--ml-blue);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  
+  &:hover {
+    color: var(--ml-dark-blue);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--ml-blue);
+    outline-offset: 2px;
+  }
+}
+
+.shippingSection {
+  margin-top: 5%;
+}
+
+.freeShipping {
+  font-size: var(--font-size-lg);
+  color: var(--ml-green);
+  font-weight: var(--font-weight-semibold);
+}
+
+.shippingDetails {
+  font-size: var(--font-size-base);
+  color: var(--ml-gray-500);
+  margin-bottom: var(--spacing-xs);
+}
+
+.shippingTime {
+  font-size: var(--font-size-base);
+  color: var(--ml-gray-500);
+  margin-bottom: var(--spacing-sm);
+  
+  strong {
+    color: var(--ml-gray-900);
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+.moreShippingOptions {
+  background: none;
+  border: none;
+  color: var(--ml-blue);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  padding: 0;
+  
+  &:hover {
+    color: var(--ml-dark-blue);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--ml-blue);
+    outline-offset: 2px;
+  }
+}
+
+.pickupSection {
+  margin-top: -10%;
+}
+
+.pickupInfo1 {
+  font-size: var(--font-size-base);
+  color: var(--ml-green);
+  font-weight: var(--font-weight-semibold);
+}
+
+.pickupInfo2 {
+  font-size: var(--font-size-lg);
+  color: var(--ml-gray-700);
+}
+
+.viewMap {
+  background: none;
+  border: none;
+  color: var(--ml-blue);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  padding: 0;
+  
+  &:hover {
+    color: var(--ml-dark-blue);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--ml-blue);
+    outline-offset: 2px;
+  }
+}
+
+.stockSection {
+  margin-top: 4%;
+}
+
+.stockStatus {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--ml-gray-700);
+  margin-bottom: var(--spacing-sm);
+}
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-base);
+  color: var(--ml-gray-700);
+}
+
+.quantitySelect {
+  padding: var(--spacing-sm);
+  border: none;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  background: white;
+  width: 110px;
+  color: var(--ml-gray-700);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--ml-blue);
+    box-shadow: 0 0 0 2px rgba(52, 131, 250, 0.2);
+  }
+}
+
+.availableText {
+  color: var(--ml-gray-400);
+  font-size: var(--font-size-sm);
+  margin-left: 5px;
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.buyNowButton {
+  background: var(--ml-blue);
+  color: white;
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: -1%;
+  
+  &:hover {
+    background: var(--ml-dark-blue);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--ml-blue);
+    outline-offset: 2px;
+  }
+}
+
+.addToCartButton {
+  background: var(--ml-light-blue-2);
+  color: var(--ml-blue);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: var(--ml-blue);
+    color: white;
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--ml-blue);
+    outline-offset: 2px;
+  }
+} 

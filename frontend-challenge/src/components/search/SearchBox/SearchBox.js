@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './SearchBox.module.scss';
 
-const SearchBox = ({ onSearch, placeholder = "Buscar productos, marcas y más..." }) => {
+const SearchBox = ({ placeholder = "Buscar productos, marcas y más..." }) => {
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef(null);
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,9 +23,10 @@ const SearchBox = ({ onSearch, placeholder = "Buscar productos, marcas y más...
     setIsLoading(true);
     
     try {
-      await onSearch(sanitizedQuery);
+      // Navegar a la página de búsqueda con el query como parámetro
+      router.push(`/search?q=${encodeURIComponent(sanitizedQuery)}`);
     } catch (error) {
-      console.error('Error en búsqueda:', error);
+      console.error('Error en navegación:', error);
     } finally {
       setIsLoading(false);
     }

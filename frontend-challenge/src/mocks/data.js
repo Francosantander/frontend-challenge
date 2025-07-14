@@ -26,7 +26,7 @@ export const mockSearchResponse = {
       }
     },
     {
-      id: "MLA987654321",
+      id: "MLA998877665",
       title: "Apple iPhone 16 Pro Max 256gb",
       price: 2299000,
       currency_id: "ARS",
