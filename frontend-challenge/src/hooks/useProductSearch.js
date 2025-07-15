@@ -37,7 +37,7 @@ const useProductSearch = () => {
         const response = await fetch(`/api/search?${searchParams}`);
         
         // Detectar si MSW no está interceptando (respuesta HTML)
-        const contentType = response.headers.get('content-type');
+        const contentType = response.headers && response.headers.get ? response.headers.get('content-type') : null;
         if (contentType && contentType.includes('text/html')) {
           // MSW no está listo, intentar retry
           if (retryCount < maxRetries) {
