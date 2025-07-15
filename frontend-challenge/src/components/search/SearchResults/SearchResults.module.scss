@@ -154,6 +154,7 @@
   text-decoration: none;
   color: inherit;
   display: block;
+  border-bottom: 1px solid var(--ml-gray-200);
   
   &:hover {
     text-decoration: none;
@@ -166,7 +167,6 @@
   gap: var(--spacing-md);
   padding: var(--spacing-lg);
   background: white;
-  border-bottom: 1px solid var(--ml-gray-200);
   transition: box-shadow 0.2s ease;
   cursor: pointer;
 
@@ -176,7 +176,6 @@
 
   &:last-child {
     border-bottom: none;
-    border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
   }
 
   @media (max-width: $mobile) {

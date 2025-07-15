@@ -44,7 +44,7 @@ const SearchResults = ({
       <div className={styles.container}>
         <div className={styles.noResults}>
           <h2>No encontramos lo que buscas</h2>
-          <p>No hay productos que coincidan con <strong>"{query}"</strong></p>
+          <p>No hay productos que coincidan con <strong>&ldquo;{query}&rdquo;</strong></p>
           <div className={styles.suggestions}>
             <h3>Te sugerimos:</h3>
             <ul>

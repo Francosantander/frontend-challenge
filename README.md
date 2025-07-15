@@ -30,6 +30,7 @@ El desafío se compone de tres partes fundamentales:
 - [x] **Diseño responsive** - Mobile-first
 - [x] **Validaciones** - Sanitización XSS, límites de caracteres, input validation
 - [x] **Estados de error** - Retry automático y mensajes contextuales
+- [x] **Testing completo** - tests unitarios y de integración
 
 #### Cosas que hubiera realizado con más tiempo
 - Usaria zustand para crear una caché de busqueda asi mejoraría la perfomance de las busquedas y evitaria las 
@@ -38,10 +39,8 @@ busqueda.
 - En caso de tener mas informacion en el mock respecto a los productos y a su detalle, podría armar una visual 
 más similar a lo que es Mercado Libre
 - Armaria un despliegue para poder acceder al desafio mediante una URL pública
-
-### Pendientes
-- [ ] **Terminar test** - Tests unitarios y de integración
-- [ ] **Revisar SEO, accesibilidad y sanitización de inputs**
+- Implementar sistema de SEO Dinámico por producto buscado
+- Implementar Rate limit de busquedas
 
 ## Instalación y Setup
 
@@ -75,9 +74,11 @@ más similar a lo que es Mercado Libre
 ### Scripts Disponibles
 
 ```bash
-npm run dev        # Modo desarrollo con Turbopack
-npm run build      # Build de producción
-npm run start      # Ejecutar build de producción
+npm run dev             # Modo desarrollo
+npm run build           # Build de producción
+npm run start           # Ejecutar build de producción (puerto 3000)
+npm test                # Ejecutar tests
+npm test -- --coverage  # Cobertura de los test
 ```
 
 ## Arquitectura del Proyecto
@@ -96,7 +97,7 @@ frontend-challenge/
 │   │   └── globals.css                # Reset CSS base
 │   ├── components/                    # Componentes reutilizables
 │   │   ├── layout/                    # Componentes de layout
-│   │   │   ├── ClientLayout.js        # Orquestación de estado de búsqueda
+│   │   │   ├── ClientLayout.js        # Wrapper de estado global
 │   │   │   ├── MSWProvider.js         # Provider de Mock Service Worker
 │   │   │   └── Topbar/                
 │   │   │       ├── Topbar.js          # Componente topbar
@@ -131,14 +132,23 @@ frontend-challenge/
 │   │   └── data.js                    # Datos mock ampliados
 │   ├── styles/                        # Estilos globales
 │   │   ├── globals.scss               # Variables CSS y utilidades
-│   │   └── _variables.scss            # Variables CSS
-│   └── __tests__/                     # Tests
-│       └── useProductSearch.test.js   
+│   │   └── _variables.scss            # Variables SCSS
+│   └── __tests__/                     # Suite de tests
+│       ├── SearchBox.test.js          # Tests del buscador
+│       ├── SearchResults.test.js      # Tests de resultados
+│       ├── ProductDetail.test.js      # Tests de detalle
+│       ├── ProductGallery.test.js     # Tests de galería
+│       ├── ProductInfo.test.js        # Tests de info producto
+│       ├── Integration.test.js        # Tests de integración
+│       ├── useProductSearch.test.js   # Tests hook búsqueda
+│       ├── useProductDetail.test.js   # Tests hook detalle
+│       ├── useIsMobile.test.js        # Tests hook móvil
+│       └── msw-api.test.js           # Tests de API mock MSW
 ├── public/                            
 │   └── mockServiceWorker.js           # Service Worker de MSW
 ├── jest.config.js                     # Configuración de Jest
-├── setupTests.js                      
-└── README.md                          
+└── setupTests.js                      
+                          
 ```
 
 ## Stack Tecnológico
@@ -172,6 +182,7 @@ Separación de responsabilidades entre lógica y UI, componentes reutilizables, 
 ### **3. Mock Service Worker para API Simulation**
 **Problema**: Simular API realista sin backend
 **Solución**: MSW con handlers que simulan API de MercadoLibre
+Ya que es un desafio, el servidor se encuentra funcional tanto en produccion como en desarrollo, para un caso de verdad, solo funcionaría en desarrollo y en producción se usaría la verdadera API.
 
 ### **4. Skeleton Loading**
 Utilizo skeleton para replicar la estructura de los productos mientras carga la información de búsqueda
@@ -196,3 +207,11 @@ Hice rutas dinamicas para las busquedas de productos y el detalle de los mismos.
 - **Detección automática** - Identifica cuando MSW no está listo
 - **Retry inteligente** - Backoff exponencial para reducir carga
 - **Manejo de errores** - Mensajes contextuales
+
+### **9. Implementación de test unitarios y test de integración**
+- Enfocados en las funcionalidades solicitadas, desarroladas y en el funcionamiento integral del proyecto
+
+### **10. Sanitización y Seguridad**
+- Eliminacion de <> en input
+- Limite de caracteres en la búsqueda
+- Manejo seguro de parametros de búsqueda
